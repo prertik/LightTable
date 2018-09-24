@@ -11,7 +11,7 @@
 (def electron-shell (js/require "shell"))
 
 (defn get-data-path []
-  (.getDataPath (.require (js/require "remote") "app")))
+  (.getAppPath (.-app remote)))
 
 (defn normalize [plat]
   (condp = plat
