@@ -1,10 +1,10 @@
 (defproject lighttable "0.8.1"
   :description "Light Table is a next generation code editor that connects you to your creation with instant feedback. Light Table is very customizable and can display anything a Chromium browser can."
   :url "http://www.lighttable.com/"
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.10.0-RC5"]
                  [crate "0.2.5"]
                  [fetch "0.2.0" :exclusions [org.clojure/clojure noir]]
-                 [org.clojure/clojurescript "1.10.339"
+                 [org.clojure/clojurescript "1.10.439"
                   :exclusions [org.apache.ant/ant]]
                  ]
   :jvm-opts ["-Xmx1g" "-XX:+UseConcMarkSweepGC"] ; cljsbuild eats memory
@@ -24,8 +24,8 @@
                                    :pretty-print true }}]}
 
   ;; TODO: Remove separate :doc :dependencies after ClojureScript upgrade
-  :profiles {:doc {:dependencies [[org.clojure/clojure "1.8.0"]
-                                  [org.clojure/clojurescript "1.10.339"
+  :profiles {:doc {:dependencies [[org.clojure/clojure "1.10.0-RC5"]
+                                  [org.clojure/clojurescript "1.10.439"
                                    :exclusions [org.apache.ant/ant]]]}}
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-codox "0.9.5"]]

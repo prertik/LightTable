@@ -2,7 +2,7 @@
 
 var app = require('electron').app,  // Module to control application life.
     BrowserWindow = require('electron').BrowserWindow,  // Module to create native browser window.
-    ipc = require("electron").ipcMain,
+    ipcMain = require("electron").ipcMain,
     optimist = require('optimist');
 
 // Keep a global reference of the window object, if you don't, the window will
