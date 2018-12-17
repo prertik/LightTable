@@ -102,7 +102,7 @@
                                                                            "anonymous"
                                                                            (:functionName f))]])
 
-(defmulti handle-log-msg #(:level %2))
+(defmulti handle-log-msg #(:level %))
 
 (defn valid-error? [text]
   (let [text (.toLowerCase text)]

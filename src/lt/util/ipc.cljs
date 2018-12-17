@@ -1,7 +1,7 @@
 (ns lt.util.ipc
   "Util functions for the ipc renderer - https://github.com/atom/electron/blob/master/docs/api/ipc-renderer.md")
 
-(def ipc "Provides access to the ipc renderer." (js/require "ipc"))
+(def ipc "Provides access to the ipc renderer." (.-ipcRenderer (js/require "electron")))
 
 ;; `send` and `on` are declared here with their bodies defined later as otherwise Codox will use the
 ;; redefined `send` and `on` in the below when block instead.
@@ -17,7 +17,7 @@
                 (prn "RENDERER->" args)
                 (apply old-send args)))
     (def on (fn [channel cb]
-              (old-on channel (fn [& args]
+              (old-on channel (fn [_ & args]
                                 (prn "->RENDERER" channel args)
                                 (apply cb args)))))))
 
