@@ -5,8 +5,8 @@
                  [crate "0.2.5"]
                  [fetch "0.3.0" :exclusions [org.clojure/clojure noir]]
                  [org.clojure/clojurescript "1.7.145"
-                  :exclusions [org.apache.ant/ant]]
-                 ]
+                  :exclusions [org.apache.ant/ant]]]
+
   :jvm-opts ["-Xmx1g" "-XX:+UseConcMarkSweepGC"] ; cljsbuild eats memory
   :cljsbuild {:builds [{:id "app"
                         :source-paths ["src"]
@@ -21,14 +21,14 @@
                         :compiler {:optimizations :simple
                                    :output-to "deploy/core/node_modules/clojurescript/cljsDeps.js"
                                    :output-dir "deploy/core/node_modules/clojurescript/cljsDeps/"
-                                   :pretty-print true }}]}
+                                   :pretty-print true}}]}
 
   ;; TODO: Remove separate :doc :dependencies after ClojureScript upgrade
   :profiles {:doc {:dependencies [[org.clojure/clojure "1.7.0"]
                                   [org.clojure/clojurescript "1.7.145"
                                    :exclusions [org.apache.ant/ant]]]}}
   :plugins [[lein-cljsbuild "1.1.7"]
-            [lein-codox "0.10.5"]]
+            [lein-codox "0.9.5"]]
   :codox {:language :clojurescript
           :project {:name "LightTable"}
           :output-path "codox"
@@ -39,5 +39,5 @@
           ;; Be explicit that undocumented public fns should be documented
           :metadata {:doc "TODO: Add docstring"
                      :doc/format :markdown}}
-  :source-paths ["src/"]
-  )
+  :source-paths ["src/"])
+

@@ -16,13 +16,16 @@
     }
   },
   "dependencies": {
-    "codemirror": "^5.42.0",
-    "optimist": "^0.6.1",
-    "request": "^2.88.0",
-    "replace": "^1.0.0",
-    "socket.io": "^2.2.0",
+    "codemirror": "^5.11.0",
+    "optimist": "^0.5.2",
+    "request": "^2.81.0",
+    "socket.io": "^0.9.13",
     "shelljs": "^0.8.3",
-    "tar": "^4.4.8"
+    "tar": "^4.4.1",
+    "active-x-obfuscator": "^0.0.1",
+    "bencode": "^0.4.3",
+    "jodid25519": "^1.0.2",
+    "jsonify": "*"
   },
   "forkedDependencies": {}
 }

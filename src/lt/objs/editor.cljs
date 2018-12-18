@@ -1001,13 +1001,16 @@
                       (load/js "core/node_modules/codemirror/addon/comment/comment.js" :sync)
                       (load/js "core/node_modules/codemirror/addon/selection/active-line.js" :sync)
                       ;; TODO: use addon/mode/overlay.js
-                      (load/js "core/node_modules/codemirror_addons/overlay.js" :sync)
+                      (load/js "core/customer_modules/codemirror_addons/overlay.js" :sync)
                       (load/js "core/node_modules/codemirror/addon/scroll/scrollpastend.js" :sync)
                       (doseq [file (files/ls (files/lt-home "core/node_modules/codemirror/addon/fold"))
                               :when (= (files/ext file) "js")]
-                        (load/js (str "core/node_modules/codemirror/addon/fold/" file) :sync))
+                      (load/js (str "core/node_modules/codemirror/addon/fold/" file) :sync))
                       (load/css "node_modules/codemirror/addon/fold/foldgutter.css")
                       (load/js "core/node_modules/codemirror/keymap/sublime.js" :sync)
+
+                      ;; Provides defineSimpleMode for some modes
+                      (load/js "core/node_modules/codemirror/addon/mode/simple.js" :sync)
                       (doseq [path (files/filter-walk #(and (= (files/ext %) "js")
                                                             (not (some (fn [m] (> (.indexOf % (str "core/node_modules/codemirror/mode/" m "/")) -1))
                                                                        mode-blacklist))

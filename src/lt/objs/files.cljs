@@ -14,7 +14,7 @@
 ;; https://github.com/shelljs/shelljs
 (def ^:private shell (load/node-module "shelljs"))
 ;; https://github.com/electron/electron/blob/master/docs/api/shell.md
-(def ^:private electron-shell (js/require "shell"))
+(def ^:private electron-shell (.-shell (js/require "electron")))
 (def ^:private os (js/require "os"))
 (def ^:private data-path (platform/get-data-path))
 
@@ -75,8 +75,8 @@
          (fn [_ out _]
            (let [ds (rest (.split out #"\r\n|\r|\n"))
                  ds (map #(str (.trim %) separator) (remove empty? ds))]
-             (set! available-drives (into #{} ds)))
-           )))
+             (set! available-drives (into #{} ds))))))
+
 
 (defn basename
   "Extracts the basename of the `path`, typically the end of the path.
@@ -355,8 +355,8 @@
           (cb {:content content
                :line-ending (determine-line-ending content)
                :type (or (path->mode path) e)})
-          (object/raise files-obj :files.open content))
-        ))
+          (object/raise files-obj :files.open content))))
+
     (catch :default e
       (object/raise files-obj :files.open.error path e)
       (when cb (cb nil e)))))
@@ -371,8 +371,8 @@
           (object/raise files-obj :files.open content)
           {:content content
            :line-ending (determine-line-ending content)
-           :type (or (ext->mode (keyword e)) e)}))
-        )
+           :type (or (ext->mode (keyword e)) e)})))
+
     (catch :default e
       (object/raise files-obj :files.open.error path e)
       nil)))
@@ -431,7 +431,7 @@
 (defn parent
   "Return directory of `path`."
   [path]
-	(.dirname fpath path))
+  (.dirname fpath path))
 
 (defn- next-available-name
   "Given a `path`, if it already exists then append a digit (starts at 1 and increments after) to the end of `path` and check again."

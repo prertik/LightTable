@@ -1,16 +1,16 @@
 {
-    "deprecated": false,
-    "description": "Replace for Lighttable use",
-    "devDependencies": {
-        "tape": "~0.2.2"
-    },
-    "keywords": [
-        "sed",
-        "grep",
-        "search",
-        "replace"
-    ],
-    "main": "replace.js",
-    "name": "replace",
-    "version": "0.2.7"
+  "deprecated": false,
+  "description": "Replace for Lighttable use",
+  "devDependencies": {
+    "tape": "~0.2.2"
+  },
+  "keywords": [
+    "sed",
+    "grep",
+    "search",
+    "replace"
+  ],
+  "main": "replace.js",
+  "name": "replace",
+  "version": "0.2.7"
 }

@@ -21,7 +21,7 @@
   (:require-macros [lt.macros :refer [behavior defui extract foreach background]]))
 
 (def search! (background (fn [obj-id opts]
-                           (let [replacer (js/require (str js/ltpath "/core/node_modules/replace"))
+                           (let [replacer (js/require (str js/ltpath "/core/customer_modules/replace"))
                                  search (if-let [pattern (re-seq #"^/(.+)/$" (:search opts))]
                                           (js/RegExp. (-> pattern first second))
                                           (:search opts))
@@ -149,9 +149,9 @@
                                            ::filesSearched (:total info)})
                       (if (:replace? info)
                         (do
-                          (notifos/done-working (str "Replaced " (:result-count @this) " results in " (/ (:time info) 1000) "s." ))
+                          (notifos/done-working (str "Replaced " (:result-count @this) " results in " (/ (:time info) 1000) "s."))
                           (dom/empty (->res this)))
-                        (notifos/done-working (str "Found " (:result-count @this) " results searching " (:total info) " files in " (/ (:time info) 1000) "s." )))))
+                        (notifos/done-working (str "Found " (:result-count @this) " results searching " (:total info) " files in " (/ (:time info) 1000) "s.")))))
 
 (behavior ::next!
           :triggers #{:next!}
@@ -217,9 +217,9 @@
         (when (> (:result-count this) result-threshold)
           (list " (showing " [:span result-threshold] ")"))
         (when (::time this)
-          (list " in " (::time this) "s")
-          )
-        ))
+          (list " in " (::time this) "s"))))
+
+
 
 (object/object* ::workspace-search
                 :tags #{:searcher}
@@ -230,16 +230,16 @@
                                                  :searcher.win
                                                  :searcher.unix)])
                         [:div.search-results
-                         [:ul.res
-                          ]
+                         [:ul.res]
+
                          [:div.searcher
                           [:p (bound this result-count)]
                           (search-box this)
                           [:div (replace-box this) (replace-all-button this)]
-                          (location-box this)
-                          ]
-                         ]
-                        ))
+                          (location-box this)]]))
+
+
+
 
 (def searcher (object/create ::workspace-search))
 

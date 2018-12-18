@@ -246,8 +246,8 @@
           :reaction (fn [this ch]
                       (when (or (not= (:ed @hinter) this)
                                 (not (:active @hinter)))
-                        (async-hints this))
-                      ))
+                        (async-hints this))))
+
 
 (defn start-hinting
   ([this] (start-hinting this nil))
@@ -351,8 +351,8 @@
 (behavior ::init
           :triggers #{:init}
           :reaction (fn [this]
-                      (load/js "core/node_modules/codemirror_addons/show-hint.js" :sync)
+                      (load/js "core/customer_modules/codemirror_addons/show-hint.js" :sync)
                       (js/CodeMirror.extendMode "clojure" (clj->js {:hint-pattern #"[\w\-\>\:\*\$\?\<\!\+\.\/foo]"}))
                       (js/CodeMirror.extendMode "text/x-clojurescript" (clj->js {:hint-pattern #"[\w\-\>\:\*\$\?\<\!\+\.\/foo]"}))
-                      (js/CodeMirror.extendMode "css" (clj->js {:hint-pattern #"[\w\.\-\#]"}))
-                      ))
+                      (js/CodeMirror.extendMode "css" (clj->js {:hint-pattern #"[\w\.\-\#]"}))))
+
